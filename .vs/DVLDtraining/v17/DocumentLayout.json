@@ -1,0 +1,468 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|e:\\study\\programming\\programmingwithabohadhood\\stage 2\\c#projects\\dvldtraining\\users\\forms\\frmshowuserinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|solutionrelative:users\\forms\\frmshowuserinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|e:\\study\\programming\\programmingwithabohadhood\\stage 2\\c#projects\\dvldtraining\\users\\forms\\frmshowcurrentinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|solutionrelative:users\\forms\\frmshowcurrentinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|e:\\study\\programming\\programmingwithabohadhood\\stage 2\\c#projects\\dvldtraining\\users\\forms\\frmmanageusers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|solutionrelative:users\\forms\\frmmanageusers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|e:\\study\\programming\\programmingwithabohadhood\\stage 2\\c#projects\\dvldtraining\\users\\forms\\frmloginscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|solutionrelative:users\\forms\\frmloginscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|e:\\study\\programming\\programmingwithabohadhood\\stage 2\\c#projects\\dvldtraining\\users\\forms\\frmchangepassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|solutionrelative:users\\forms\\frmchangepassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|e:\\study\\programming\\programmingwithabohadhood\\stage 2\\c#projects\\dvldtraining\\users\\forms\\frmaddupdateuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|solutionrelative:users\\forms\\frmaddupdateuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|e:\\study\\programming\\programmingwithabohadhood\\stage 2\\c#projects\\dvldtraining\\tests\\forms\\frmtaketest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|solutionrelative:tests\\forms\\frmtaketest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|e:\\study\\programming\\programmingwithabohadhood\\stage 2\\c#projects\\dvldtraining\\tests\\forms\\frmscheduletest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|solutionrelative:tests\\forms\\frmscheduletest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|e:\\study\\programming\\programmingwithabohadhood\\stage 2\\c#projects\\dvldtraining\\tests\\forms\\frmmanagetesttypes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|solutionrelative:tests\\forms\\frmmanagetesttypes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|e:\\study\\programming\\programmingwithabohadhood\\stage 2\\c#projects\\dvldtraining\\tests\\forms\\frmlisttestappointments.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|solutionrelative:tests\\forms\\frmlisttestappointments.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|e:\\study\\programming\\programmingwithabohadhood\\stage 2\\c#projects\\dvldtraining\\tests\\forms\\frmedittesttype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|solutionrelative:tests\\forms\\frmedittesttype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|e:\\study\\programming\\programmingwithabohadhood\\stage 2\\c#projects\\dvldtraining\\people\\forms\\frmshowpersoninfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|solutionrelative:people\\forms\\frmshowpersoninfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|e:\\study\\programming\\programmingwithabohadhood\\stage 2\\c#projects\\dvldtraining\\people\\forms\\frmmanagepeople.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|solutionrelative:people\\forms\\frmmanagepeople.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|e:\\study\\programming\\programmingwithabohadhood\\stage 2\\c#projects\\dvldtraining\\people\\forms\\frmaddupdateperson.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|solutionrelative:people\\forms\\frmaddupdateperson.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|e:\\study\\programming\\programmingwithabohadhood\\stage 2\\c#projects\\dvldtraining\\licenses\\forms\\frmshowpersonlicenseshistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|solutionrelative:licenses\\forms\\frmshowpersonlicenseshistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|e:\\study\\programming\\programmingwithabohadhood\\stage 2\\c#projects\\dvldtraining\\licenses\\forms\\frmshowlicenseinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|solutionrelative:licenses\\forms\\frmshowlicenseinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|e:\\study\\programming\\programmingwithabohadhood\\stage 2\\c#projects\\dvldtraining\\licenses\\forms\\frmshowinternationallicenseinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|solutionrelative:licenses\\forms\\frmshowinternationallicenseinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|e:\\study\\programming\\programmingwithabohadhood\\stage 2\\c#projects\\dvldtraining\\licenses\\forms\\frmreleasedetainedlicense.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|solutionrelative:licenses\\forms\\frmreleasedetainedlicense.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|e:\\study\\programming\\programmingwithabohadhood\\stage 2\\c#projects\\dvldtraining\\licenses\\forms\\frmmanagedetainedlicenses.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|solutionrelative:licenses\\forms\\frmmanagedetainedlicenses.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|e:\\study\\programming\\programmingwithabohadhood\\stage 2\\c#projects\\dvldtraining\\licenses\\forms\\frmissuelicenseforthefirsttime.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|solutionrelative:licenses\\forms\\frmissuelicenseforthefirsttime.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|e:\\study\\programming\\programmingwithabohadhood\\stage 2\\c#projects\\dvldtraining\\licenses\\forms\\frmdetainlicenseapplication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|solutionrelative:licenses\\forms\\frmdetainlicenseapplication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|e:\\study\\programming\\programmingwithabohadhood\\stage 2\\c#projects\\dvldtraining\\licenses\\forms\\frmaddnewinternationallicense.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|solutionrelative:licenses\\forms\\frmaddnewinternationallicense.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|e:\\study\\programming\\programmingwithabohadhood\\stage 2\\c#projects\\dvldtraining\\drivers\\frmmanagedrivers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|solutionrelative:drivers\\frmmanagedrivers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|e:\\study\\programming\\programmingwithabohadhood\\stage 2\\c#projects\\dvldtraining\\applications\\forms\\replace license\\frmreplacelostordamagedlicense.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|solutionrelative:applications\\forms\\replace license\\frmreplacelostordamagedlicense.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|e:\\study\\programming\\programmingwithabohadhood\\stage 2\\c#projects\\dvldtraining\\applications\\forms\\renew license application\\frmrenewlicenseapplication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|solutionrelative:applications\\forms\\renew license application\\frmrenewlicenseapplication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|e:\\study\\programming\\programmingwithabohadhood\\stage 2\\c#projects\\dvldtraining\\applications\\forms\\local license\\frmshowlocallicenseapplicationinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|solutionrelative:applications\\forms\\local license\\frmshowlocallicenseapplicationinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|e:\\study\\programming\\programmingwithabohadhood\\stage 2\\c#projects\\dvldtraining\\applications\\forms\\local license\\frmmanagelocallicenseapplications.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|solutionrelative:applications\\forms\\local license\\frmmanagelocallicenseapplications.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "frmShowUserInfo.cs [Design]",
+              "DocumentMoniker": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Users\\Forms\\frmShowUserInfo.cs",
+              "RelativeDocumentMoniker": "Users\\Forms\\frmShowUserInfo.cs",
+              "ToolTip": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Users\\Forms\\frmShowUserInfo.cs [Design]",
+              "RelativeToolTip": "Users\\Forms\\frmShowUserInfo.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-24T21:48:41.165Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "frmShowCurrentInfo.cs [Design]",
+              "DocumentMoniker": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Users\\Forms\\frmShowCurrentInfo.cs",
+              "RelativeDocumentMoniker": "Users\\Forms\\frmShowCurrentInfo.cs",
+              "ToolTip": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Users\\Forms\\frmShowCurrentInfo.cs [Design]",
+              "RelativeToolTip": "Users\\Forms\\frmShowCurrentInfo.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-24T21:48:39.726Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "frmManageUsers.cs [Design]",
+              "DocumentMoniker": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Users\\Forms\\frmManageUsers.cs",
+              "RelativeDocumentMoniker": "Users\\Forms\\frmManageUsers.cs",
+              "ToolTip": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Users\\Forms\\frmManageUsers.cs [Design]",
+              "RelativeToolTip": "Users\\Forms\\frmManageUsers.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-24T21:48:38.104Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "frmLoginScreen.cs [Design]",
+              "DocumentMoniker": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Users\\Forms\\frmLoginScreen.cs",
+              "RelativeDocumentMoniker": "Users\\Forms\\frmLoginScreen.cs",
+              "ToolTip": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Users\\Forms\\frmLoginScreen.cs [Design]",
+              "RelativeToolTip": "Users\\Forms\\frmLoginScreen.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-24T21:48:37.023Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "frmChangePassword.cs [Design]",
+              "DocumentMoniker": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Users\\Forms\\frmChangePassword.cs",
+              "RelativeDocumentMoniker": "Users\\Forms\\frmChangePassword.cs",
+              "ToolTip": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Users\\Forms\\frmChangePassword.cs [Design]",
+              "RelativeToolTip": "Users\\Forms\\frmChangePassword.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-24T21:48:35.687Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "frmAddUpdateUser.cs [Design]",
+              "DocumentMoniker": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Users\\Forms\\frmAddUpdateUser.cs",
+              "RelativeDocumentMoniker": "Users\\Forms\\frmAddUpdateUser.cs",
+              "ToolTip": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Users\\Forms\\frmAddUpdateUser.cs [Design]",
+              "RelativeToolTip": "Users\\Forms\\frmAddUpdateUser.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-24T21:48:33.461Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "frmTakeTest.cs [Design]",
+              "DocumentMoniker": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Tests\\Forms\\frmTakeTest.cs",
+              "RelativeDocumentMoniker": "Tests\\Forms\\frmTakeTest.cs",
+              "ToolTip": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Tests\\Forms\\frmTakeTest.cs [Design]",
+              "RelativeToolTip": "Tests\\Forms\\frmTakeTest.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-24T21:48:24.879Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "frmScheduleTest.cs [Design]",
+              "DocumentMoniker": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Tests\\Forms\\frmScheduleTest.cs",
+              "RelativeDocumentMoniker": "Tests\\Forms\\frmScheduleTest.cs",
+              "ToolTip": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Tests\\Forms\\frmScheduleTest.cs [Design]",
+              "RelativeToolTip": "Tests\\Forms\\frmScheduleTest.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-24T21:48:23.506Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "frmManageTestTypes.cs [Design]",
+              "DocumentMoniker": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Tests\\Forms\\frmManageTestTypes.cs",
+              "RelativeDocumentMoniker": "Tests\\Forms\\frmManageTestTypes.cs",
+              "ToolTip": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Tests\\Forms\\frmManageTestTypes.cs [Design]",
+              "RelativeToolTip": "Tests\\Forms\\frmManageTestTypes.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-24T21:48:21.714Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "frmListTestAppointments.cs [Design]",
+              "DocumentMoniker": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Tests\\Forms\\frmListTestAppointments.cs",
+              "RelativeDocumentMoniker": "Tests\\Forms\\frmListTestAppointments.cs",
+              "ToolTip": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Tests\\Forms\\frmListTestAppointments.cs [Design]",
+              "RelativeToolTip": "Tests\\Forms\\frmListTestAppointments.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-24T21:48:17.782Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "frmEditTestType.cs [Design]",
+              "DocumentMoniker": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Tests\\Forms\\frmEditTestType.cs",
+              "RelativeDocumentMoniker": "Tests\\Forms\\frmEditTestType.cs",
+              "ToolTip": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Tests\\Forms\\frmEditTestType.cs [Design]",
+              "RelativeToolTip": "Tests\\Forms\\frmEditTestType.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-24T21:48:06.673Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "frmShowPersonInfo.cs [Design]",
+              "DocumentMoniker": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\People\\Forms\\frmShowPersonInfo.cs",
+              "RelativeDocumentMoniker": "People\\Forms\\frmShowPersonInfo.cs",
+              "ToolTip": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\People\\Forms\\frmShowPersonInfo.cs [Design]",
+              "RelativeToolTip": "People\\Forms\\frmShowPersonInfo.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-24T21:48:01.785Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "frmManagePeople.cs [Design]",
+              "DocumentMoniker": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\People\\Forms\\frmManagePeople.cs",
+              "RelativeDocumentMoniker": "People\\Forms\\frmManagePeople.cs",
+              "ToolTip": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\People\\Forms\\frmManagePeople.cs [Design]",
+              "RelativeToolTip": "People\\Forms\\frmManagePeople.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-24T21:48:00.626Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "frmAddUpdatePerson.cs [Design]",
+              "DocumentMoniker": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\People\\Forms\\frmAddUpdatePerson.cs",
+              "RelativeDocumentMoniker": "People\\Forms\\frmAddUpdatePerson.cs",
+              "ToolTip": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\People\\Forms\\frmAddUpdatePerson.cs [Design]",
+              "RelativeToolTip": "People\\Forms\\frmAddUpdatePerson.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-24T21:47:58.997Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "frmShowPersonLicensesHistory.cs [Design]",
+              "DocumentMoniker": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Licenses\\Forms\\frmShowPersonLicensesHistory.cs",
+              "RelativeDocumentMoniker": "Licenses\\Forms\\frmShowPersonLicensesHistory.cs",
+              "ToolTip": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Licenses\\Forms\\frmShowPersonLicensesHistory.cs [Design]",
+              "RelativeToolTip": "Licenses\\Forms\\frmShowPersonLicensesHistory.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-24T21:47:39.832Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "frmShowLicenseInfo.cs [Design]",
+              "DocumentMoniker": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Licenses\\Forms\\frmShowLicenseInfo.cs",
+              "RelativeDocumentMoniker": "Licenses\\Forms\\frmShowLicenseInfo.cs",
+              "ToolTip": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Licenses\\Forms\\frmShowLicenseInfo.cs [Design]",
+              "RelativeToolTip": "Licenses\\Forms\\frmShowLicenseInfo.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-24T21:47:38.227Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "frmShowInternationalLicenseInfo.cs [Design]",
+              "DocumentMoniker": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Licenses\\Forms\\frmShowInternationalLicenseInfo.cs",
+              "RelativeDocumentMoniker": "Licenses\\Forms\\frmShowInternationalLicenseInfo.cs",
+              "ToolTip": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Licenses\\Forms\\frmShowInternationalLicenseInfo.cs [Design]",
+              "RelativeToolTip": "Licenses\\Forms\\frmShowInternationalLicenseInfo.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-24T21:47:26.958Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "frmReleaseDetainedLicense.cs [Design]",
+              "DocumentMoniker": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Licenses\\Forms\\frmReleaseDetainedLicense.cs",
+              "RelativeDocumentMoniker": "Licenses\\Forms\\frmReleaseDetainedLicense.cs",
+              "ToolTip": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Licenses\\Forms\\frmReleaseDetainedLicense.cs [Design]",
+              "RelativeToolTip": "Licenses\\Forms\\frmReleaseDetainedLicense.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-24T21:47:25.283Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "frmManageDetainedLicenses.cs [Design]",
+              "DocumentMoniker": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Licenses\\Forms\\frmManageDetainedLicenses.cs",
+              "RelativeDocumentMoniker": "Licenses\\Forms\\frmManageDetainedLicenses.cs",
+              "ToolTip": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Licenses\\Forms\\frmManageDetainedLicenses.cs [Design]",
+              "RelativeToolTip": "Licenses\\Forms\\frmManageDetainedLicenses.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-24T21:47:23.699Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "frmIssueLicenseForTheFirstTime.cs [Design]",
+              "DocumentMoniker": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Licenses\\Forms\\frmIssueLicenseForTheFirstTime.cs",
+              "RelativeDocumentMoniker": "Licenses\\Forms\\frmIssueLicenseForTheFirstTime.cs",
+              "ToolTip": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Licenses\\Forms\\frmIssueLicenseForTheFirstTime.cs [Design]",
+              "RelativeToolTip": "Licenses\\Forms\\frmIssueLicenseForTheFirstTime.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-24T21:47:18.647Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "frmDetainLicenseApplication.cs [Design]",
+              "DocumentMoniker": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Licenses\\Forms\\frmDetainLicenseApplication.cs",
+              "RelativeDocumentMoniker": "Licenses\\Forms\\frmDetainLicenseApplication.cs",
+              "ToolTip": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Licenses\\Forms\\frmDetainLicenseApplication.cs [Design]",
+              "RelativeToolTip": "Licenses\\Forms\\frmDetainLicenseApplication.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-24T21:47:17.267Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "frmAddNewInternationalLicense.cs [Design]",
+              "DocumentMoniker": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Licenses\\Forms\\frmAddNewInternationalLicense.cs",
+              "RelativeDocumentMoniker": "Licenses\\Forms\\frmAddNewInternationalLicense.cs",
+              "ToolTip": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Licenses\\Forms\\frmAddNewInternationalLicense.cs [Design]",
+              "RelativeToolTip": "Licenses\\Forms\\frmAddNewInternationalLicense.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-24T21:47:15.606Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "frmManageDrivers.cs [Design]",
+              "DocumentMoniker": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Drivers\\frmManageDrivers.cs",
+              "RelativeDocumentMoniker": "Drivers\\frmManageDrivers.cs",
+              "ToolTip": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Drivers\\frmManageDrivers.cs [Design]",
+              "RelativeToolTip": "Drivers\\frmManageDrivers.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-24T21:47:10.352Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "frmReplaceLostOrDamagedLicense.cs [Design]",
+              "DocumentMoniker": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Applications\\Forms\\Replace License\\frmReplaceLostOrDamagedLicense.cs",
+              "RelativeDocumentMoniker": "Applications\\Forms\\Replace License\\frmReplaceLostOrDamagedLicense.cs",
+              "ToolTip": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Applications\\Forms\\Replace License\\frmReplaceLostOrDamagedLicense.cs [Design]",
+              "RelativeToolTip": "Applications\\Forms\\Replace License\\frmReplaceLostOrDamagedLicense.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-24T21:47:07.127Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "frmRenewLicenseApplication.cs [Design]",
+              "DocumentMoniker": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Applications\\Forms\\Renew License Application\\frmRenewLicenseApplication.cs",
+              "RelativeDocumentMoniker": "Applications\\Forms\\Renew License Application\\frmRenewLicenseApplication.cs",
+              "ToolTip": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Applications\\Forms\\Renew License Application\\frmRenewLicenseApplication.cs [Design]",
+              "RelativeToolTip": "Applications\\Forms\\Renew License Application\\frmRenewLicenseApplication.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-24T21:47:04.87Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "frmShowLocalLicenseApplicationInfo.cs [Design]",
+              "DocumentMoniker": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Applications\\Forms\\Local License\\frmShowLocalLicenseApplicationInfo.cs",
+              "RelativeDocumentMoniker": "Applications\\Forms\\Local License\\frmShowLocalLicenseApplicationInfo.cs",
+              "ToolTip": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Applications\\Forms\\Local License\\frmShowLocalLicenseApplicationInfo.cs [Design]",
+              "RelativeToolTip": "Applications\\Forms\\Local License\\frmShowLocalLicenseApplicationInfo.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-24T21:47:01.063Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "frmManageLocalLicenseApplications.cs [Design]",
+              "DocumentMoniker": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Applications\\Forms\\Local License\\frmManageLocalLicenseApplications.cs",
+              "RelativeDocumentMoniker": "Applications\\Forms\\Local License\\frmManageLocalLicenseApplications.cs",
+              "ToolTip": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Applications\\Forms\\Local License\\frmManageLocalLicenseApplications.cs [Design]",
+              "RelativeToolTip": "Applications\\Forms\\Local License\\frmManageLocalLicenseApplications.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-24T21:46:57.345Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

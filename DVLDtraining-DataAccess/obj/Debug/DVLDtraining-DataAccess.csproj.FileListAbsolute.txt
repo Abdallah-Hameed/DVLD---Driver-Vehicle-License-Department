@@ -1,0 +1,6 @@
+E:\Study\Programming\ProgrammingWithAboHadhood\Stage 2\C#Projects\DVLDtraining\DVLDtraining-DataAccess\bin\Debug\DVLDtraining-DataAccess.dll
+E:\Study\Programming\ProgrammingWithAboHadhood\Stage 2\C#Projects\DVLDtraining\DVLDtraining-DataAccess\bin\Debug\DVLDtraining-DataAccess.pdb
+E:\Study\Programming\ProgrammingWithAboHadhood\Stage 2\C#Projects\DVLDtraining\DVLDtraining-DataAccess\obj\Debug\DVLDtraining-DataAccess.csproj.AssemblyReference.cache
+E:\Study\Programming\ProgrammingWithAboHadhood\Stage 2\C#Projects\DVLDtraining\DVLDtraining-DataAccess\obj\Debug\DVLDtraining-DataAccess.csproj.CoreCompileInputs.cache
+E:\Study\Programming\ProgrammingWithAboHadhood\Stage 2\C#Projects\DVLDtraining\DVLDtraining-DataAccess\obj\Debug\DVLDtraining-DataAccess.dll
+E:\Study\Programming\ProgrammingWithAboHadhood\Stage 2\C#Projects\DVLDtraining\DVLDtraining-DataAccess\obj\Debug\DVLDtraining-DataAccess.pdb

@@ -1,0 +1,9 @@
+E:\Study\Programming\ProgrammingWithAboHadhood\Stage 2\C#Projects\DVLDtraining\DVLDtraining-BusinessLogic\bin\Debug\DVLDtraining-BusinessLogic.dll
+E:\Study\Programming\ProgrammingWithAboHadhood\Stage 2\C#Projects\DVLDtraining\DVLDtraining-BusinessLogic\bin\Debug\DVLDtraining-BusinessLogic.pdb
+E:\Study\Programming\ProgrammingWithAboHadhood\Stage 2\C#Projects\DVLDtraining\DVLDtraining-BusinessLogic\bin\Debug\DVLDtraining-DataAccess.dll
+E:\Study\Programming\ProgrammingWithAboHadhood\Stage 2\C#Projects\DVLDtraining\DVLDtraining-BusinessLogic\bin\Debug\DVLDtraining-DataAccess.pdb
+E:\Study\Programming\ProgrammingWithAboHadhood\Stage 2\C#Projects\DVLDtraining\DVLDtraining-BusinessLogic\obj\Debug\DVLDtraining-BusinessLogic.csproj.AssemblyReference.cache
+E:\Study\Programming\ProgrammingWithAboHadhood\Stage 2\C#Projects\DVLDtraining\DVLDtraining-BusinessLogic\obj\Debug\DVLDtraining-BusinessLogic.csproj.CoreCompileInputs.cache
+E:\Study\Programming\ProgrammingWithAboHadhood\Stage 2\C#Projects\DVLDtraining\DVLDtraining-BusinessLogic\obj\Debug\DVLDtrai.7AE778E8.Up2Date
+E:\Study\Programming\ProgrammingWithAboHadhood\Stage 2\C#Projects\DVLDtraining\DVLDtraining-BusinessLogic\obj\Debug\DVLDtraining-BusinessLogic.dll
+E:\Study\Programming\ProgrammingWithAboHadhood\Stage 2\C#Projects\DVLDtraining\DVLDtraining-BusinessLogic\obj\Debug\DVLDtraining-BusinessLogic.pdb
