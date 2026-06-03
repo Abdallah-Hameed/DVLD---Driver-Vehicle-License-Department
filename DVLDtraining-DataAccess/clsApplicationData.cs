@@ -1,7 +1,9 @@
-﻿using DVLDTraining_DataAccess;
+﻿using DVLD_DataAccess;
+using DVLDTraining_DataAccess;
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 
 namespace DVLDtraining_DataAccess
 {
@@ -10,19 +12,19 @@ namespace DVLDtraining_DataAccess
         static SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
         public static bool GetApplicationInfoByID(int ApplicationID, ref int ApplicantPersonID, ref DateTime ApplicationDate,
-            ref int ApplicationTypeID, ref byte ApplicationStatus, ref DateTime LastStatusDate, ref float PaidFees, ref int CreatedByUserID)
+                    ref int ApplicationTypeID, ref byte ApplicationStatus, ref DateTime LastStatusDate, ref float PaidFees, ref int CreatedByUserID)
         {
             bool isFound = false;
 
-            string query = @"SELECT ApplicantPersonID, ApplicationDate, ApplicationTypeID, ApplicationStatus, LastStatusDate, PaidFees, CreatedByUserID 
-                                    FROM Applications WHERE ApplicationID = @ApplicationID";
-            
-            SqlCommand command = new SqlCommand(query, connection);
-
-            command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
-
             try
             {
+                string query = @"SELECT ApplicantPersonID, ApplicationDate, ApplicationTypeID, ApplicationStatus, LastStatusDate, PaidFees, CreatedByUserID 
+                                FROM Applications WHERE ApplicationID = @ApplicationID";
+
+                SqlCommand command = new SqlCommand(query, connection);
+
+                command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+
                 connection.Open();
 
                 SqlDataReader reader = command.ExecuteReader();
@@ -30,6 +32,7 @@ namespace DVLDtraining_DataAccess
                 if (reader.Read())
                 {
                     isFound = true;
+
                     ApplicantPersonID = (int)reader["ApplicantPersonID"];
 
                     ApplicationDate = (DateTime)reader["ApplicationDate"];
@@ -50,7 +53,16 @@ namespace DVLDtraining_DataAccess
 
             catch (SqlException ex)
             {
+                EventLogger.LogSqlError("GetApplicationInfoByID", ApplicationID, ex);
+
                 throw new Exception($"Database error while fetching Application ID {ApplicationID}:\n{ex.Message}", ex);
+            }
+
+            catch (Exception ex)
+            {
+                EventLogger.LogError("GetApplicationInfoByID", $"Unexpected error for Application ID {ApplicationID}", ex);
+
+                throw;
             }
 
             finally
@@ -81,10 +93,18 @@ namespace DVLDtraining_DataAccess
                 }
 
                 reader.Close();
+
+                EventLogger.LogInformation("GetAllApplications", $"Retrieved {dt.Rows.Count} applications");
             }
 
-            catch
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("GetAllApplications", 0, ex);
+            }
+
+            catch (Exception ex)
+            {
+                EventLogger.LogError("GetAllApplications", "Error getting all applications", ex);
             }
 
             finally
@@ -96,7 +116,7 @@ namespace DVLDtraining_DataAccess
         }
 
         public static int AddNewApplication(int ApplicantPersonID, DateTime ApplicationDate, int ApplicationTypeID, byte ApplicationStatus,
-            DateTime LastStatusDate, float PaidFees, int CreatedByUserID,int LicenseClassID)
+            DateTime LastStatusDate, float PaidFees, int CreatedByUserID, int LicenseClassID)
         {
             int ApplicationID = -1;
 
@@ -129,12 +149,19 @@ namespace DVLDtraining_DataAccess
                 if (result != null && int.TryParse(result.ToString(), out int insertedID))
                 {
                     ApplicationID = insertedID;
+
+                    EventLogger.LogDataOperation("INSERT", "Applications", ApplicationID);
                 }
             }
 
-            catch
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("AddNewApplication", ApplicantPersonID, ex);
+            }
 
+            catch (Exception ex)
+            {
+                EventLogger.LogError("AddNewApplication", $"Error adding application for Person ID {ApplicantPersonID}", ex);
             }
 
             finally
@@ -146,7 +173,7 @@ namespace DVLDtraining_DataAccess
         }
 
         public static bool UpdateApplication(int ApplicationID, int ApplicantPersonID, DateTime ApplicationDate, int ApplicationTypeID, byte ApplicationStatus,
-            DateTime LastStatusDate,float PaidFees, int CreatedByUserID)
+            DateTime LastStatusDate, float PaidFees, int CreatedByUserID)
         {
             int rowsAffected = 0;
 
@@ -178,10 +205,28 @@ namespace DVLDtraining_DataAccess
                 connection.Open();
 
                 rowsAffected = command.ExecuteNonQuery();
+
+                if (rowsAffected > 0)
+                {
+                    EventLogger.LogDataOperation("UPDATE", "Applications", ApplicationID);
+                }
+
+                else
+                {
+                    EventLogger.LogWarning("UpdateApplication", $"Application ID {ApplicationID} not found for update");
+                }
+            }
+            catch (SqlException ex)
+            {
+                EventLogger.LogSqlError("UpdateApplication", ApplicationID, ex);
+
+                return false;
             }
 
-            catch
+            catch (Exception ex)
             {
+                EventLogger.LogError("UpdateApplication", $"Error updating application ID {ApplicationID}", ex);
+
                 return false;
             }
 
@@ -208,11 +253,26 @@ namespace DVLDtraining_DataAccess
                 connection.Open();
 
                 rowsAffected = command.ExecuteNonQuery();
+
+                if (rowsAffected > 0)
+                {
+                    EventLogger.LogDataOperation("DELETE", "Applications", ApplicationID);
+                }
+
+                else
+                {
+                    EventLogger.LogWarning("DeleteApplication", $"Application ID {ApplicationID} not found for deletion");
+                }
             }
 
-            catch
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("DeleteApplication", ApplicationID, ex);
+            }
 
+            catch (Exception ex)
+            {
+                EventLogger.LogError("DeleteApplication", $"Error deleting application ID {ApplicationID}", ex);
             }
 
             finally
@@ -244,8 +304,17 @@ namespace DVLDtraining_DataAccess
                 reader.Close();
             }
 
-            catch
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("IsApplicationExist", ApplicationID, ex);
+
+                isFound = false;
+            }
+
+            catch (Exception ex)
+            {
+                EventLogger.LogError("IsApplicationExist", $"Error checking application ID {ApplicationID}", ex);
+
                 isFound = false;
             }
 
@@ -287,9 +356,14 @@ namespace DVLDtraining_DataAccess
                 }
             }
 
-            catch
+            catch (SqlException ex)
             {
-                return ActiveApplicationID;
+                EventLogger.LogSqlError("GetActiveApplicationID", PersonID, ex);
+            }
+
+            catch (Exception ex)
+            {
+                EventLogger.LogError("GetActiveApplicationID", $"Error getting active application for Person ID {PersonID}", ex);
             }
 
             finally
@@ -317,6 +391,7 @@ namespace DVLDtraining_DataAccess
             command.Parameters.AddWithValue("@ApplicationTypeID", ApplicationTypeID);
 
             command.Parameters.AddWithValue("@LicenseClassID", LicenseClassID);
+
             try
             {
                 connection.Open();
@@ -329,9 +404,14 @@ namespace DVLDtraining_DataAccess
                 }
             }
 
-            catch
+            catch (SqlException ex)
             {
-                return ActiveApplicationID;
+                EventLogger.LogSqlError("GetActiveApplicationIDForLicenseClass", PersonID, ex);
+            }
+
+            catch (Exception ex)
+            {
+                EventLogger.LogError("GetActiveApplicationIDForLicenseClass", $"Error for Person ID {PersonID}, License Class {LicenseClassID}", ex);
             }
 
             finally
@@ -364,10 +444,22 @@ namespace DVLDtraining_DataAccess
                 connection.Open();
 
                 rowsAffected = command.ExecuteNonQuery();
+
+                if (rowsAffected > 0)
+                {
+                    EventLogger.LogInformation("UpdateStatus", $"Application {ApplicationID} status updated to {NewStatus}");
+                }
             }
 
-            catch
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("UpdateStatus", ApplicationID, ex);
+                return false;
+            }
+
+            catch (Exception ex)
+            {
+                EventLogger.LogError("UpdateStatus", $"Error updating status for Application ID {ApplicationID}", ex);
                 return false;
             }
 

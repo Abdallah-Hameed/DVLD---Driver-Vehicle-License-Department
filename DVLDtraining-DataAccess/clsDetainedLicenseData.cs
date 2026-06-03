@@ -58,20 +58,24 @@ namespace DVLD_DataAccess
                     else
                         ReleaseApplicationID = (int)reader["ReleaseApplicationID"];
                 }
-
                 else
                 {
                     isFound = false;
+                    EventLogger.LogWarning("GetDetainedLicenseInfoByDetainID", $"Detain ID {DetainID} not found");
                 }
 
                 reader.Close();
             }
-
-            catch
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("GetDetainedLicenseInfoByDetainID", DetainID, ex);
                 isFound = false;
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("GetDetainedLicenseInfoByDetainID", $"Error getting detain ID {DetainID}", ex);
+                isFound = false;
+            }
             finally
             {
                 connection.Close();
@@ -129,20 +133,24 @@ namespace DVLD_DataAccess
                     else
                         ReleaseApplicationID = (int)reader["ReleaseApplicationID"];
                 }
-
                 else
                 {
                     isFound = false;
+                    EventLogger.LogWarning("GetDetainedLicenseInfoByLicenseID", $"License ID {LicenseID} not found or not detained");
                 }
 
                 reader.Close();
             }
-
-            catch
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("GetDetainedLicenseInfoByLicenseID", LicenseID, ex);
                 isFound = false;
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("GetDetainedLicenseInfoByLicenseID", $"Error getting detain info for License ID {LicenseID}", ex);
+                isFound = false;
+            }
             finally
             {
                 connection.Close();
@@ -171,11 +179,16 @@ namespace DVLD_DataAccess
                 }
 
                 reader.Close();
+
+                EventLogger.LogInformation("GetAllDetainedLicenses", $"Retrieved {dt.Rows.Count} detained licenses");
             }
-
-            catch
+            catch (SqlException ex)
             {
-
+                EventLogger.LogSqlError("GetAllDetainedLicenses", 0, ex);
+            }
+            catch (Exception ex)
+            {
+                EventLogger.LogError("GetAllDetainedLicenses", "Error getting all detained licenses", ex);
             }
             finally
             {
@@ -213,14 +226,17 @@ namespace DVLD_DataAccess
                 if (result != null && int.TryParse(result.ToString(), out int insertedID))
                 {
                     DetainID = insertedID;
+                    EventLogger.LogDataOperation("INSERT", "DetainedLicenses", DetainID);
                 }
             }
-
-            catch
+            catch (SqlException ex)
             {
-
+                EventLogger.LogSqlError("AddNewDetainedLicense", LicenseID, ex);
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("AddNewDetainedLicense", $"Error adding detained license for License ID {LicenseID}", ex);
+            }
             finally
             {
                 connection.Close();
@@ -239,12 +255,12 @@ namespace DVLD_DataAccess
                               SET LicenseID = @LicenseID, 
                               DetainDate = @DetainDate, 
                               FineFees = @FineFees,
-                              CreatedByUserID = @CreatedByUserID,   
+                              CreatedByUserID = @CreatedByUserID   
                               WHERE DetainID=@DetainID;";
 
             SqlCommand command = new SqlCommand(query, connection);
 
-            command.Parameters.AddWithValue("@DetainedLicenseID", DetainID);
+            command.Parameters.AddWithValue("@DetainID", DetainID);
 
             command.Parameters.AddWithValue("@LicenseID", LicenseID);
 
@@ -259,13 +275,26 @@ namespace DVLD_DataAccess
                 connection.Open();
 
                 rowsAffected = command.ExecuteNonQuery();
-            }
 
-            catch
+                if (rowsAffected > 0)
+                {
+                    EventLogger.LogDataOperation("UPDATE", "DetainedLicenses", DetainID);
+                }
+                else
+                {
+                    EventLogger.LogWarning("UpdateDetainedLicense", $"Detain ID {DetainID} not found for update");
+                }
+            }
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("UpdateDetainedLicense", DetainID, ex);
                 return false;
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("UpdateDetainedLicense", $"Error updating detain ID {DetainID}", ex);
+                return false;
+            }
             finally
             {
                 connection.Close();
@@ -296,18 +325,32 @@ namespace DVLD_DataAccess
             command.Parameters.AddWithValue("@ReleaseApplicationID", ReleaseApplicationID);
 
             command.Parameters.AddWithValue("@ReleaseDate", DateTime.Now);
+
             try
             {
                 connection.Open();
 
                 rowsAffected = command.ExecuteNonQuery();
-            }
 
-            catch
+                if (rowsAffected > 0)
+                {
+                    EventLogger.LogInformation("ReleaseDetainedLicense", $"Detain ID {DetainID} released successfully");
+                }
+                else
+                {
+                    EventLogger.LogWarning("ReleaseDetainedLicense", $"Detain ID {DetainID} not found for release");
+                }
+            }
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("ReleaseDetainedLicense", DetainID, ex);
                 return false;
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("ReleaseDetainedLicense", $"Error releasing detain ID {DetainID}", ex);
+                return false;
+            }
             finally
             {
                 connection.Close();
@@ -339,12 +382,14 @@ namespace DVLD_DataAccess
                     IsDetained = Convert.ToBoolean(result);
                 }
             }
-
-            catch
+            catch (SqlException ex)
             {
-
+                EventLogger.LogSqlError("IsLicenseDetained", LicenseID, ex);
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("IsLicenseDetained", $"Error checking if License ID {LicenseID} is detained", ex);
+            }
             finally
             {
                 connection.Close();

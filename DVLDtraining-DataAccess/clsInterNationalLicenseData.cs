@@ -44,20 +44,24 @@ namespace DVLD_DataAccess
 
                     CreatedByUserID = (int)reader["DriverID"];
                 }
-
                 else
                 {
                     isFound = false;
+                    EventLogger.LogWarning("GetInternationalLicenseInfoByID", $"International License ID {InternationalLicenseID} not found");
                 }
 
                 reader.Close();
             }
-
-            catch
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("GetInternationalLicenseInfoByID", InternationalLicenseID, ex);
                 isFound = false;
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("GetInternationalLicenseInfoByID", $"Error getting international license ID {InternationalLicenseID}", ex);
+                isFound = false;
+            }
             finally
             {
                 connection.Close();
@@ -87,12 +91,17 @@ namespace DVLD_DataAccess
                 }
 
                 reader.Close();
-            }
 
-            catch
+                EventLogger.LogInformation("GetAllInternationalLicenses", $"Retrieved {dt.Rows.Count} international licenses");
+            }
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("GetAllInternationalLicenses", 0, ex);
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("GetAllInternationalLicenses", "Error getting all international licenses", ex);
+            }
             finally
             {
                 connection.Close();
@@ -124,10 +133,16 @@ namespace DVLD_DataAccess
                 }
 
                 reader.Close();
-            }
 
-            catch
+                EventLogger.LogInformation("GetDriverInternationalLicenses", $"Retrieved {dt.Rows.Count} international licenses for Driver ID {DriverID}");
+            }
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("GetDriverInternationalLicenses", DriverID, ex);
+            }
+            catch (Exception ex)
+            {
+                EventLogger.LogError("GetDriverInternationalLicenses", $"Error getting international licenses for Driver ID {DriverID}", ex);
             }
             finally
             {
@@ -173,13 +188,18 @@ namespace DVLD_DataAccess
                 if (result != null && int.TryParse(result.ToString(), out int insertedID))
                 {
                     InternationalLicenseID = insertedID;
+                    EventLogger.LogDataOperation("INSERT", "InternationalLicenses", InternationalLicenseID);
+                    EventLogger.LogInformation("AddNewInternationalLicense", $"Deactivated previous licenses for Driver ID {DriverID}");
                 }
             }
-
-            catch
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("AddNewInternationalLicense", DriverID, ex);
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("AddNewInternationalLicense", $"Error adding international license for Driver ID {DriverID}", ex);
+            }
             finally
             {
                 connection.Close();
@@ -227,13 +247,26 @@ namespace DVLD_DataAccess
                 connection.Open();
 
                 rowsAffected = command.ExecuteNonQuery();
-            }
 
-            catch
+                if (rowsAffected > 0)
+                {
+                    EventLogger.LogDataOperation("UPDATE", "InternationalLicenses", InternationalLicenseID);
+                }
+                else
+                {
+                    EventLogger.LogWarning("UpdateInternationalLicense", $"International License ID {InternationalLicenseID} not found for update");
+                }
+            }
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("UpdateInternationalLicense", InternationalLicenseID, ex);
                 return false;
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("UpdateInternationalLicense", $"Error updating international license ID {InternationalLicenseID}", ex);
+                return false;
+            }
             finally
             {
                 connection.Close();
@@ -264,13 +297,19 @@ namespace DVLD_DataAccess
                 {
                     InternationalLicenseID = insertedID;
                 }
+                else
+                {
+                    EventLogger.LogWarning("GetActiveInternationalLicenseIDByDriverID", $"No active international license found for Driver ID {DriverID}");
+                }
             }
-
-            catch
+            catch (SqlException ex)
             {
-
+                EventLogger.LogSqlError("GetActiveInternationalLicenseIDByDriverID", DriverID, ex);
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("GetActiveInternationalLicenseIDByDriverID", $"Error getting active international license for Driver ID {DriverID}", ex);
+            }
             finally
             {
                 connection.Close();

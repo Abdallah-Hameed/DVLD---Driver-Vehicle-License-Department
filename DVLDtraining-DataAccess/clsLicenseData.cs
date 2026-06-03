@@ -55,20 +55,24 @@ namespace DVLD_DataAccess
 
                     CreatedByUserID = (int)reader["DriverID"];
                 }
-
                 else
                 {
                     isFound = false;
+                    EventLogger.LogWarning("GetLicenseInfoByID", $"License ID {LicenseID} not found");
                 }
 
                 reader.Close();
             }
-
-            catch
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("GetLicenseInfoByID", LicenseID, ex);
                 isFound = false;
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("GetLicenseInfoByID", $"Error getting license ID {LicenseID}", ex);
+                isFound = false;
+            }
             finally
             {
                 connection.Close();
@@ -97,12 +101,17 @@ namespace DVLD_DataAccess
                 }
 
                 reader.Close();
-            }
 
-            catch
+                EventLogger.LogInformation("GetAllLicenses", $"Retrieved {dt.Rows.Count} licenses");
+            }
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("GetAllLicenses", 0, ex);
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("GetAllLicenses", "Error getting all licenses", ex);
+            }
             finally
             {
                 connection.Close();
@@ -136,12 +145,17 @@ namespace DVLD_DataAccess
                 }
 
                 reader.Close();
-            }
 
-            catch
+                EventLogger.LogInformation("GetDriverLicenses", $"Retrieved {dt.Rows.Count} licenses for Driver ID {DriverID}");
+            }
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("GetDriverLicenses", DriverID, ex);
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("GetDriverLicenses", $"Error getting licenses for Driver ID {DriverID}", ex);
+            }
             finally
             {
                 connection.Close();
@@ -195,13 +209,17 @@ namespace DVLD_DataAccess
                 if (result != null && int.TryParse(result.ToString(), out int insertedID))
                 {
                     LicenseID = insertedID;
+                    EventLogger.LogDataOperation("INSERT", "Licenses", LicenseID);
                 }
             }
-
-            catch
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("AddNewLicense", DriverID, ex);
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("AddNewLicense", $"Error adding license for Driver ID {DriverID}", ex);
+            }
             finally
             {
                 connection.Close();
@@ -260,13 +278,26 @@ namespace DVLD_DataAccess
                 connection.Open();
 
                 rowsAffected = command.ExecuteNonQuery();
-            }
 
-            catch
+                if (rowsAffected > 0)
+                {
+                    EventLogger.LogDataOperation("UPDATE", "Licenses", LicenseID);
+                }
+                else
+                {
+                    EventLogger.LogWarning("UpdateLicense", $"License ID {LicenseID} not found for update");
+                }
+            }
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("UpdateLicense", LicenseID, ex);
                 return false;
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("UpdateLicense", $"Error updating license ID {LicenseID}", ex);
+                return false;
+            }
             finally
             {
                 connection.Close();
@@ -299,13 +330,19 @@ namespace DVLD_DataAccess
                 {
                     LicenseID = insertedID;
                 }
+                else
+                {
+                    EventLogger.LogWarning("GetActiveLicenseIDByPersonID", $"No active license found for Person ID {PersonID}, License Class {LicenseClassID}");
+                }
             }
-
-            catch
+            catch (SqlException ex)
             {
-
+                EventLogger.LogSqlError("GetActiveLicenseIDByPersonID", PersonID, ex);
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("GetActiveLicenseIDByPersonID", $"Error getting active license for Person ID {PersonID}", ex);
+            }
             finally
             {
                 connection.Close();
@@ -329,13 +366,26 @@ namespace DVLD_DataAccess
                 connection.Open();
 
                 rowsAffected = command.ExecuteNonQuery();
-            }
 
-            catch
+                if (rowsAffected > 0)
+                {
+                    EventLogger.LogInformation("DeactivateLicense", $"License ID {LicenseID} deactivated successfully");
+                }
+                else
+                {
+                    EventLogger.LogWarning("DeactivateLicense", $"License ID {LicenseID} not found for deactivation");
+                }
+            }
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("DeactivateLicense", LicenseID, ex);
                 return false;
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("DeactivateLicense", $"Error deactivating license ID {LicenseID}", ex);
+                return false;
+            }
             finally
             {
                 connection.Close();

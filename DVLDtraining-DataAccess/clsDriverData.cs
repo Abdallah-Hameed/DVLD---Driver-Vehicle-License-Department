@@ -35,20 +35,24 @@ namespace DVLD_DataAccess
 
                     CreatedDate = (DateTime)reader["CreatedDate"];
                 }
-
                 else
                 {
                     isFound = false;
+                    EventLogger.LogWarning("GetDriverInfoByDriverID", $"Driver ID {DriverID} not found");
                 }
 
                 reader.Close();
             }
-
-            catch
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("GetDriverInfoByDriverID", DriverID, ex);
                 isFound = false;
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("GetDriverInfoByDriverID", $"Error getting driver ID {DriverID}", ex);
+                isFound = false;
+            }
             finally
             {
                 connection.Close();
@@ -83,20 +87,24 @@ namespace DVLD_DataAccess
 
                     CreatedDate = (DateTime)reader["CreatedDate"];
                 }
-
                 else
                 {
                     isFound = false;
+                    EventLogger.LogWarning("GetDriverInfoByPersonID", $"Person ID {PersonID} not found as a driver");
                 }
 
                 reader.Close();
             }
-
-            catch
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("GetDriverInfoByPersonID", PersonID, ex);
                 isFound = false;
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("GetDriverInfoByPersonID", $"Error getting driver for Person ID {PersonID}", ex);
+                isFound = false;
+            }
             finally
             {
                 connection.Close();
@@ -125,12 +133,17 @@ namespace DVLD_DataAccess
                 }
 
                 reader.Close();
-            }
 
-            catch
+                EventLogger.LogInformation("GetAllDrivers", $"Retrieved {dt.Rows.Count} drivers");
+            }
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("GetAllDrivers", 0, ex);
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("GetAllDrivers", "Error getting all drivers", ex);
+            }
             finally
             {
                 connection.Close();
@@ -147,7 +160,6 @@ namespace DVLD_DataAccess
                             Values (@PersonID,@CreatedByUserID,@CreatedDate);
                           
                             SELECT SCOPE_IDENTITY();";
-
 
             SqlCommand command = new SqlCommand(query, connection);
 
@@ -166,14 +178,17 @@ namespace DVLD_DataAccess
                 if (result != null && int.TryParse(result.ToString(), out int insertedID))
                 {
                     DriverID = insertedID;
+                    EventLogger.LogDataOperation("INSERT", "Drivers", DriverID);
                 }
             }
-
-            catch
+            catch (SqlException ex)
             {
-
+                EventLogger.LogSqlError("AddNewDriver", PersonID, ex);
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("AddNewDriver", $"Error adding driver for Person ID {PersonID}", ex);
+            }
             finally
             {
                 connection.Close();
@@ -201,13 +216,26 @@ namespace DVLD_DataAccess
                 connection.Open();
 
                 rowsAffected = command.ExecuteNonQuery();
-            }
 
-            catch
+                if (rowsAffected > 0)
+                {
+                    EventLogger.LogDataOperation("UPDATE", "Drivers", DriverID);
+                }
+                else
+                {
+                    EventLogger.LogWarning("UpdateDriver", $"Driver ID {DriverID} not found for update");
+                }
+            }
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("UpdateDriver", DriverID, ex);
                 return false;
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("UpdateDriver", $"Error updating driver ID {DriverID}", ex);
+                return false;
+            }
             finally
             {
                 connection.Close();

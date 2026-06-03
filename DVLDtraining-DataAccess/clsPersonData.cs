@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DVLD_DataAccess;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -76,16 +77,24 @@ namespace DVLDTraining_DataAccess
                     {
                         ImagePath = string.Empty;
                     }
-
-                    connection.Close();
                 }
-            }
+                else
+                {
+                    EventLogger.LogWarning("GetPersonInfoByID", $"Person ID {PersonID} not found");
+                }
 
-            catch
+                reader.Close();
+            }
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("GetPersonInfoByID", PersonID, ex);
                 isFound = false;
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("GetPersonInfoByID", $"Error getting person ID {PersonID}", ex);
+                isFound = false;
+            }
             finally
             {
                 connection.Close();
@@ -162,16 +171,24 @@ namespace DVLDTraining_DataAccess
                     {
                         ImagePath = string.Empty;
                     }
-
-                    connection.Close();
                 }
-            }
+                else
+                {
+                    EventLogger.LogWarning("GetPersonInfoByNationalNo", $"National No '{NationalNo}' not found");
+                }
 
-            catch (Exception ex)
+                reader.Close();
+            }
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("GetPersonInfoByNationalNo", 0, ex);
                 isFound = false;
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("GetPersonInfoByNationalNo", $"Error getting person by National No '{NationalNo}'", ex);
+                isFound = false;
+            }
             finally
             {
                 connection.Close();
@@ -179,7 +196,6 @@ namespace DVLDTraining_DataAccess
 
             return isFound;
         }
-
 
         public static int AddNewPerson(string FirstName, string SecondName, string ThirdName, string LastName, string NationalNo,
            DateTime DateOfBirth, short Gendor, string Address, string Phone, string Email, int NationalityCountryID, string ImagePath)
@@ -196,15 +212,12 @@ namespace DVLDTraining_DataAccess
 
             command.Parameters.AddWithValue("@SecondName", SecondName);
 
-
             if (ThirdName != "" && ThirdName != null)
             {
                 command.Parameters.AddWithValue("@ThirdName", ThirdName);
             }
-
             else
                 command.Parameters.AddWithValue("@ThirdName", System.DBNull.Value);
-
 
             command.Parameters.AddWithValue("@LastName", LastName);
 
@@ -216,15 +229,12 @@ namespace DVLDTraining_DataAccess
 
             command.Parameters.AddWithValue("@Phone", Phone);
 
-
             if (Email != "" && Email != null)
             {
                 command.Parameters.AddWithValue("@Email", Email);
             }
-
             else
                 command.Parameters.AddWithValue("@Email", System.DBNull.Value);
-
 
             command.Parameters.AddWithValue("@Address", Address);
 
@@ -234,33 +244,37 @@ namespace DVLDTraining_DataAccess
             {
                 command.Parameters.AddWithValue("@ImagePath", ImagePath);
             }
-
             else
             {
                 command.Parameters.AddWithValue("@ImagePath", System.DBNull.Value);
             }
 
-                try
+            try
+            {
+                connection.Open();
+
+                object result = command.ExecuteScalar();
+
+                if (result != null && int.TryParse(result.ToString(), out int insertedID))
                 {
-                    connection.Open();
-
-                    object result = command.ExecuteScalar();
-
-                    if (result != null && int.TryParse(result.ToString(), out int insertedID))
-                    {
-                        PersonID = insertedID;
-                    }
+                    PersonID = insertedID;
+                    EventLogger.LogDataOperation("INSERT", "People", PersonID);
                 }
-
-                catch (Exception ex)
-                {
-                    throw new Exception("Error: " + ex.Message);
-                }
-
-                finally
-                {
-                    connection.Close();
-                }
+            }
+            catch (SqlException ex)
+            {
+                EventLogger.LogSqlError("AddNewPerson", 0, ex);
+                throw new Exception("Error: " + ex.Message, ex);
+            }
+            catch (Exception ex)
+            {
+                EventLogger.LogError("AddNewPerson", $"Error adding person with National No '{NationalNo}'", ex);
+                throw new Exception("Error: " + ex.Message, ex);
+            }
+            finally
+            {
+                connection.Close();
+            }
 
             return PersonID;
         }
@@ -297,7 +311,6 @@ namespace DVLDTraining_DataAccess
             {
                 command.Parameters.AddWithValue("@ThirdName", ThirdName);
             }
-
             else
                 command.Parameters.AddWithValue("@ThirdName", System.DBNull.Value);
 
@@ -315,7 +328,6 @@ namespace DVLDTraining_DataAccess
             {
                 command.Parameters.AddWithValue("@Email", Email);
             }
-
             else
                 command.Parameters.AddWithValue("@Email", System.DBNull.Value);
 
@@ -327,21 +339,34 @@ namespace DVLDTraining_DataAccess
             {
                 command.Parameters.AddWithValue("@ImagePath", ImagePath);
             }
-
             else
                 command.Parameters.AddWithValue("@ImagePath", System.DBNull.Value);
+
             try
             {
                 connection.Open();
 
                 RowsAffected = command.ExecuteNonQuery();
-            }
 
+                if (RowsAffected > 0)
+                {
+                    EventLogger.LogDataOperation("UPDATE", "People", PersonID);
+                }
+                else
+                {
+                    EventLogger.LogWarning("UpdatePerson", $"Person ID {PersonID} not found for update");
+                }
+            }
+            catch (SqlException ex)
+            {
+                EventLogger.LogSqlError("UpdatePerson", PersonID, ex);
+                throw new Exception("Error: " + ex.Message, ex);
+            }
             catch (Exception ex)
             {
-                throw new Exception("Error: " + ex.Message);
+                EventLogger.LogError("UpdatePerson", $"Error updating person ID {PersonID}", ex);
+                throw new Exception("Error: " + ex.Message, ex);
             }
-
             finally
             {
                 connection.Close();
@@ -359,9 +384,7 @@ namespace DVLDTraining_DataAccess
 			  People.DateOfBirth, People.Gendor,  
 				  CASE
                   WHEN People.Gendor = 0 THEN 'Male'
-
                   ELSE 'Female'
-
                   END as GendorCaption ,
 			  People.Address, People.Phone, People.Email, 
               People.NationalityCountryID, Countries.CountryName, People.ImagePath
@@ -383,13 +406,17 @@ namespace DVLDTraining_DataAccess
                 }
 
                 reader.Close();
-            }
 
+                EventLogger.LogInformation("GetAllPeople", $"Retrieved {dt.Rows.Count} people");
+            }
+            catch (SqlException ex)
+            {
+                EventLogger.LogSqlError("GetAllPeople", 0, ex);
+            }
             catch (Exception ex)
             {
-
+                EventLogger.LogError("GetAllPeople", "Error getting all people", ex);
             }
-
             finally
             {
                 connection.Close();
@@ -415,13 +442,24 @@ namespace DVLDTraining_DataAccess
                 connection.Open();
 
                 rowsAffected = command.ExecuteNonQuery();
-            }
 
+                if (rowsAffected > 0)
+                {
+                    EventLogger.LogDataOperation("DELETE", "People", PersonID);
+                }
+                else
+                {
+                    EventLogger.LogWarning("DeletePerson", $"Person ID {PersonID} not found for deletion");
+                }
+            }
+            catch (SqlException ex)
+            {
+                EventLogger.LogSqlError("DeletePerson", PersonID, ex);
+            }
             catch (Exception ex)
             {
-
+                EventLogger.LogError("DeletePerson", $"Error deleting person ID {PersonID}", ex);
             }
-
             finally
             {
                 connection.Close();
@@ -452,12 +490,16 @@ namespace DVLDTraining_DataAccess
 
                 reader.Close();
             }
-
-            catch (Exception ex)
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("IsPersonExist", PersonID, ex);
                 isFound = false;
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("IsPersonExist", $"Error checking if person ID {PersonID} exists", ex);
+                isFound = false;
+            }
             finally
             {
                 connection.Close();
@@ -481,16 +523,28 @@ namespace DVLDTraining_DataAccess
             try
             {
                 connection.Open();
+
                 SqlDataReader reader = command.ExecuteReader();
 
                 isFound = reader.HasRows;
 
                 reader.Close();
             }
-            catch (Exception ex)
+
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("IsPersonExist", 0, ex);
+
                 isFound = false;
             }
+
+            catch (Exception ex)
+            {
+                EventLogger.LogError("IsPersonExist", $"Error checking if National No '{NationalNo}' exists", ex);
+
+                isFound = false;
+            }
+
             finally
             {
                 connection.Close();

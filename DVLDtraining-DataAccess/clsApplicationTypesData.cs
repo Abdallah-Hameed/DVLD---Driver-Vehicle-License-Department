@@ -1,4 +1,5 @@
-﻿ using DVLDTraining_DataAccess;
+﻿using DVLD_DataAccess;
+using DVLDTraining_DataAccess;
 using System;
 using System.Data;
 using System.Data.SqlClient;
@@ -33,13 +34,23 @@ namespace DVLDtraining_DataAccess
 
                     isFound = true;
                 }
-            }
+                else
+                {
+                    EventLogger.LogWarning("GetApplicationTypeByID", $"Application Type ID {ID} not found");
+                }
 
-            catch
+                reader.Close();
+            }
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("GetApplicationTypeByID", ID, ex);
                 isFound = false;
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("GetApplicationTypeByID", $"Error getting application type ID {ID}", ex);
+                isFound = false;
+            }
             finally
             {
                 connection.Close();
@@ -48,7 +59,7 @@ namespace DVLDtraining_DataAccess
             return isFound;
         }
 
-        static public bool UpdateApplicationType(int ID,string Title,float Fees)
+        static public bool UpdateApplicationType(int ID, string Title, float Fees)
         {
             int rowsAffected = 0;
 
@@ -69,12 +80,24 @@ namespace DVLDtraining_DataAccess
                 connection.Open();
 
                 rowsAffected = command.ExecuteNonQuery();
+
+                if (rowsAffected > 0)
+                {
+                    EventLogger.LogDataOperation("UPDATE", "ApplicationTypes", ID);
+                }
+                else
+                {
+                    EventLogger.LogWarning("UpdateApplicationType", $"Application Type ID {ID} not found for update");
+                }
             }
-            catch
+            catch (SqlException ex)
             {
-
+                EventLogger.LogSqlError("UpdateApplicationType", ID, ex);
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("UpdateApplicationType", $"Error updating application type ID {ID}", ex);
+            }
             finally
             {
                 connection.Close();
@@ -101,13 +124,19 @@ namespace DVLDtraining_DataAccess
                 {
                     dt.Load(reader);
                 }
-            }
 
-            catch
+                reader.Close();
+
+                EventLogger.LogInformation("GetAllApplicationTypes", $"Retrieved {dt.Rows.Count} application types");
+            }
+            catch (SqlException ex)
             {
-
+                EventLogger.LogSqlError("GetAllApplicationTypes", 0, ex);
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("GetAllApplicationTypes", "Error getting all application types", ex);
+            }
             finally
             {
                 connection.Close();

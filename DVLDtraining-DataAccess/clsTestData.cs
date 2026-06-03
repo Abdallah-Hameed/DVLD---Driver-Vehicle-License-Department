@@ -44,16 +44,21 @@ namespace DVLD_DataAccess
                 else
                 {
                     isFound = false;
+                    EventLogger.LogWarning("GetTestInfoByID", $"Test ID {TestID} not found");
                 }
 
                 reader.Close();
             }
-
-            catch
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("GetTestInfoByID", TestID, ex);
                 isFound = false;
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("GetTestInfoByID", $"Error getting test ID {TestID}", ex);
+                isFound = false;
+            }
             finally
             {
                 connection.Close();
@@ -61,7 +66,6 @@ namespace DVLD_DataAccess
 
             return isFound;
         }
-
 
         public static bool GetLastTestByPersonIDAndLicenseClassIDAndTestTypeID(int PersonID, int LicenseClassID, int TestTypeID, ref int TestID,
                                 ref int TestAppointmentID, ref bool TestResult, ref string Notes, ref int CreatedByUserID)
@@ -113,17 +117,24 @@ namespace DVLD_DataAccess
 
                     CreatedByUserID = (int)reader["CreatedByUserID"];
                 }
-
                 else
                 {
                     isFound = false;
+                    EventLogger.LogWarning("GetLastTestByPersonIDAndLicenseClassIDAndTestTypeID",
+                        $"No test found for Person ID {PersonID}, License Class {LicenseClassID}, Test Type {TestTypeID}");
                 }
 
                 reader.Close();
             }
-
-            catch
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("GetLastTestByPersonIDAndLicenseClassIDAndTestTypeID", PersonID, ex);
+                isFound = false;
+            }
+            catch (Exception ex)
+            {
+                EventLogger.LogError("GetLastTestByPersonIDAndLicenseClassIDAndTestTypeID",
+                    $"Error getting last test for Person ID {PersonID}, License Class {LicenseClassID}", ex);
                 isFound = false;
             }
             finally
@@ -149,17 +160,21 @@ namespace DVLD_DataAccess
                 SqlDataReader reader = command.ExecuteReader();
 
                 if (reader.HasRows)
-
                 {
                     dt.Load(reader);
                 }
 
                 reader.Close();
+
+                EventLogger.LogInformation("GetAllTests", $"Retrieved {dt.Rows.Count} tests");
             }
-
-            catch
+            catch (SqlException ex)
             {
-
+                EventLogger.LogSqlError("GetAllTests", 0, ex);
+            }
+            catch (Exception ex)
+            {
+                EventLogger.LogError("GetAllTests", "Error getting all tests", ex);
             }
             finally
             {
@@ -203,13 +218,18 @@ namespace DVLD_DataAccess
                 if (result != null && int.TryParse(result.ToString(), out int insertedID))
                 {
                     TestID = insertedID;
+                    EventLogger.LogDataOperation("INSERT", "Tests", TestID);
+                    EventLogger.LogInformation("AddNewTest", $"Test added for Appointment ID {TestAppointmentID}, Result: {TestResult}");
                 }
             }
-
-            catch
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("AddNewTest", TestAppointmentID, ex);
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("AddNewTest", $"Error adding test for Appointment ID {TestAppointmentID}", ex);
+            }
             finally
             {
                 connection.Close();
@@ -220,7 +240,6 @@ namespace DVLD_DataAccess
 
         public static bool UpdateTest(int TestID, int TestAppointmentID, bool TestResult, string Notes, int CreatedByUserID)
         {
-
             int rowsAffected = 0;
 
             string query = @"Update  Tests   set TestAppointmentID = @TestAppointmentID,TestResult=@TestResult,
@@ -244,12 +263,25 @@ namespace DVLD_DataAccess
 
                 rowsAffected = command.ExecuteNonQuery();
 
+                if (rowsAffected > 0)
+                {
+                    EventLogger.LogDataOperation("UPDATE", "Tests", TestID);
+                }
+                else
+                {
+                    EventLogger.LogWarning("UpdateTest", $"Test ID {TestID} not found for update");
+                }
             }
-            catch
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("UpdateTest", TestID, ex);
                 return false;
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("UpdateTest", $"Error updating test ID {TestID}", ex);
+                return false;
+            }
             finally
             {
                 connection.Close();
@@ -283,9 +315,14 @@ namespace DVLD_DataAccess
                 }
             }
 
-            catch
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("GetPassedTestCount", LocalLicenseApplicationID, ex);
+            }
 
+            catch (Exception ex)
+            {
+                EventLogger.LogError("GetPassedTestCount", $"Error getting passed test count for Local License Application ID {LocalLicenseApplicationID}", ex);
             }
 
             finally

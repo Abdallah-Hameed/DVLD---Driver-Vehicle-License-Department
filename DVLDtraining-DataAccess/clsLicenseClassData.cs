@@ -42,18 +42,23 @@ namespace DVLD_DataAccess
                 else
                 {
                     isFound = false;
+                    EventLogger.LogWarning("GetLicenseClassInfoByID", $"License Class ID {LicenseClassID} not found");
                 }
 
                 reader.Close();
             }
-
-            catch(Exception ex)
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("GetLicenseClassInfoByID", LicenseClassID, ex);
                 isFound = false;
-
-                throw new Exception(ex.Message);
+                throw new Exception(ex.Message, ex);
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("GetLicenseClassInfoByID", $"Error getting license class ID {LicenseClassID}", ex);
+                isFound = false;
+                throw new Exception(ex.Message, ex);
+            }
             finally
             {
                 connection.Close();
@@ -92,20 +97,24 @@ namespace DVLD_DataAccess
 
                     ClassFees = Convert.ToSingle(reader["ClassFees"]);
                 }
-
                 else
                 {
                     isFound = false;
+                    EventLogger.LogWarning("GetLicenseClassInfoByClassName", $"License Class Name '{ClassName}' not found");
                 }
 
                 reader.Close();
             }
-
-            catch
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("GetLicenseClassInfoByClassName", 0, ex);
                 isFound = false;
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("GetLicenseClassInfoByClassName", $"Error getting license class by name '{ClassName}'", ex);
+                isFound = false;
+            }
             finally
             {
                 connection.Close();
@@ -134,13 +143,17 @@ namespace DVLD_DataAccess
                 }
 
                 reader.Close();
-            }
 
-            catch
+                EventLogger.LogInformation("GetAllLicenseClasses", $"Retrieved {dt.Rows.Count} license classes");
+            }
+            catch (SqlException ex)
             {
-
+                EventLogger.LogSqlError("GetAllLicenseClasses", 0, ex);
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("GetAllLicenseClasses", "Error getting all license classes", ex);
+            }
             finally
             {
                 connection.Close();
@@ -153,8 +166,9 @@ namespace DVLD_DataAccess
         {
             int LicenseClassID = -1;
 
+            // ملاحظة: هناك خطأ في الـ query الأصلي - وجود WHERE بعد VALUES
             string query = @"Insert Into LicenseClasses  (ClassName,ClassDescription,MinimumAllowedAge, DefaultValidityLength,ClassFees)
-                            Values ( @ClassName,@ClassDescription,@MinimumAllowedAge, @DefaultValidityLength,@ClassFees)where LicenseClassID = @LicenseClassID;
+                            Values ( @ClassName,@ClassDescription,@MinimumAllowedAge, @DefaultValidityLength,@ClassFees);
                             SELECT SCOPE_IDENTITY();";
 
             SqlCommand command = new SqlCommand(query, connection);
@@ -178,13 +192,17 @@ namespace DVLD_DataAccess
                 if (result != null && int.TryParse(result.ToString(), out int insertedID))
                 {
                     LicenseClassID = insertedID;
+                    EventLogger.LogDataOperation("INSERT", "LicenseClasses", LicenseClassID);
                 }
             }
-
-            catch
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("AddNewLicenseClass", 0, ex);
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("AddNewLicenseClass", $"Error adding license class '{ClassName}'", ex);
+            }
             finally
             {
                 connection.Close();
@@ -224,13 +242,26 @@ namespace DVLD_DataAccess
                 connection.Open();
 
                 rowsAffected = command.ExecuteNonQuery();
-            }
 
-            catch
+                if (rowsAffected > 0)
+                {
+                    EventLogger.LogDataOperation("UPDATE", "LicenseClasses", LicenseClassID);
+                }
+                else
+                {
+                    EventLogger.LogWarning("UpdateLicenseClass", $"License Class ID {LicenseClassID} not found for update");
+                }
+            }
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("UpdateLicenseClass", LicenseClassID, ex);
                 return false;
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("UpdateLicenseClass", $"Error updating license class ID {LicenseClassID}", ex);
+                return false;
+            }
             finally
             {
                 connection.Close();

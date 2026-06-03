@@ -47,19 +47,23 @@ namespace DVLD_DataAccess
 
                     else
                         RetakeTestApplicationID = (int)reader["RetakeTestApplicationID"];
-
                 }
-
                 else
                 {
                     isFound = false;
+                    EventLogger.LogWarning("GetTestAppointmentInfoByTestAppointmentID", $"Test Appointment ID {TestAppointmentID} not found");
                 }
 
                 reader.Close();
             }
-
-            catch
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("GetTestAppointmentInfoByTestAppointmentID", TestAppointmentID, ex);
+                isFound = false;
+            }
+            catch (Exception ex)
+            {
+                EventLogger.LogError("GetTestAppointmentInfoByTestAppointmentID", $"Error getting test appointment ID {TestAppointmentID}", ex);
                 isFound = false;
             }
             finally
@@ -77,7 +81,6 @@ namespace DVLD_DataAccess
 
             string query = @"SELECT top 1 * FROM TestAppointments WHERE (TestTypeID = @TestTypeID) and (LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID) 
                                 order by TestAppointmentID Desc";
-
 
             SqlCommand command = new SqlCommand(query, connection);
 
@@ -111,17 +114,22 @@ namespace DVLD_DataAccess
                     else
                         RetakeTestApplicationID = (int)reader["RetakeTestApplicationID"];
                 }
-
                 else
                 {
                     isFound = false;
+                    EventLogger.LogWarning("GetLastTestAppointment", $"No test appointment found for Local License Application ID {LocalDrivingLicenseApplicationID}, Test Type {TestTypeID}");
                 }
 
                 reader.Close();
             }
-
-            catch
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("GetLastTestAppointment", LocalDrivingLicenseApplicationID, ex);
+                isFound = false;
+            }
+            catch (Exception ex)
+            {
+                EventLogger.LogError("GetLastTestAppointment", $"Error getting last test appointment for Local License Application ID {LocalDrivingLicenseApplicationID}", ex);
                 isFound = false;
             }
             finally
@@ -134,14 +142,12 @@ namespace DVLD_DataAccess
 
         public static DataTable GetAllTestAppointments()
         {
-
             DataTable dt = new DataTable();
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = @"select * from TestAppointments_View
                                   order by AppointmentDate Desc";
-
 
             SqlCommand command = new SqlCommand(query, connection);
 
@@ -152,21 +158,22 @@ namespace DVLD_DataAccess
                 SqlDataReader reader = command.ExecuteReader();
 
                 if (reader.HasRows)
-
                 {
                     dt.Load(reader);
                 }
 
                 reader.Close();
 
-
+                EventLogger.LogInformation("GetAllTestAppointments", $"Retrieved {dt.Rows.Count} test appointments");
             }
-
-            catch
+            catch (SqlException ex)
             {
-
+                EventLogger.LogSqlError("GetAllTestAppointments", 0, ex);
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("GetAllTestAppointments", "Error getting all test appointments", ex);
+            }
             finally
             {
                 connection.Close();
@@ -177,20 +184,17 @@ namespace DVLD_DataAccess
 
         public static DataTable GetApplicationTestAppointmentsPerTestType(int LocalDrivingLicenseApplicationID, int TestTypeID)
         {
-
             DataTable dt = new DataTable();
 
             string query = @"SELECT TestAppointmentID, AppointmentDate,PaidFees, IsLocked FROM TestAppointments WHERE (TestTypeID = @TestTypeID) 
                                 AND (LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID)
                         order by TestAppointmentID desc;";
 
-
             SqlCommand command = new SqlCommand(query, connection);
 
             command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
 
             command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
-
 
             try
             {
@@ -199,19 +203,22 @@ namespace DVLD_DataAccess
                 SqlDataReader reader = command.ExecuteReader();
 
                 if (reader.HasRows)
-
                 {
                     dt.Load(reader);
                 }
 
                 reader.Close();
-            }
 
-            catch
+                EventLogger.LogInformation("GetApplicationTestAppointmentsPerTestType", $"Retrieved {dt.Rows.Count} test appointments for Local License Application ID {LocalDrivingLicenseApplicationID}, Test Type {TestTypeID}");
+            }
+            catch (SqlException ex)
             {
-
+                EventLogger.LogSqlError("GetApplicationTestAppointmentsPerTestType", LocalDrivingLicenseApplicationID, ex);
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("GetApplicationTestAppointmentsPerTestType", $"Error getting test appointments for Local License Application ID {LocalDrivingLicenseApplicationID}", ex);
+            }
             finally
             {
                 connection.Close();
@@ -231,7 +238,6 @@ namespace DVLD_DataAccess
                             SELECT SCOPE_IDENTITY();";
 
             SqlCommand command = new SqlCommand(query, connection);
-
 
             command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
 
@@ -258,14 +264,17 @@ namespace DVLD_DataAccess
                 if (result != null && int.TryParse(result.ToString(), out int insertedID))
                 {
                     TestAppointmentID = insertedID;
+                    EventLogger.LogDataOperation("INSERT", "TestAppointments", TestAppointmentID);
                 }
             }
-
-            catch
+            catch (SqlException ex)
             {
-
+                EventLogger.LogSqlError("AddNewTestAppointment", LocalDrivingLicenseApplicationID, ex);
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("AddNewTestAppointment", $"Error adding test appointment for Local License Application ID {LocalDrivingLicenseApplicationID}", ex);
+            }
             finally
             {
                 connection.Close();
@@ -277,7 +286,6 @@ namespace DVLD_DataAccess
         public static bool UpdateTestAppointment(int TestAppointmentID, int TestTypeID, int LocalDrivingLicenseApplicationID, DateTime AppointmentDate,
             float PaidFees, int CreatedByUserID, bool IsLocked, int RetakeTestApplicationID)
         {
-
             int rowsAffected = 0;
 
             string query = @"Update  TestAppointments  
@@ -318,10 +326,26 @@ namespace DVLD_DataAccess
 
                 rowsAffected = command.ExecuteNonQuery();
 
+                if (rowsAffected > 0)
+                {
+                    EventLogger.LogDataOperation("UPDATE", "TestAppointments", TestAppointmentID);
+                }
+                else
+                {
+                    EventLogger.LogWarning("UpdateTestAppointment", $"Test Appointment ID {TestAppointmentID} not found for update");
+                }
             }
 
-            catch
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("UpdateTestAppointment", TestAppointmentID, ex);
+
+                return false;
+            }
+
+            catch (Exception ex)
+            {
+                EventLogger.LogError("UpdateTestAppointment", $"Error updating test appointment ID {TestAppointmentID}", ex);
                 return false;
             }
 
@@ -341,7 +365,7 @@ namespace DVLD_DataAccess
 
             SqlCommand command = new SqlCommand(query, connection);
 
-            command.Parameters.AddWithValue("@TestAppointmentID", TestAppointmentID); 
+            command.Parameters.AddWithValue("@TestAppointmentID", TestAppointmentID);
 
             try
             {
@@ -349,10 +373,27 @@ namespace DVLD_DataAccess
 
                 rowsAffected = command.ExecuteNonQuery();
 
+                if (rowsAffected > 0)
+                {
+                    EventLogger.LogInformation("LockTestAppointment", $"Test Appointment ID {TestAppointmentID} locked successfully");
+                }
+                else
+                {
+                    EventLogger.LogWarning("LockTestAppointment", $"Test Appointment ID {TestAppointmentID} not found for locking");
+                }
             }
 
-            catch
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("LockTestAppointment", TestAppointmentID, ex);
+
+                return false;
+            }
+
+            catch (Exception ex)
+            {
+                EventLogger.LogError("LockTestAppointment", $"Error locking test appointment ID {TestAppointmentID}", ex);
+
                 return false;
             }
 
@@ -384,11 +425,20 @@ namespace DVLD_DataAccess
                 {
                     TestID = insertedID;
                 }
+                else
+                {
+                    EventLogger.LogWarning("GetTestIDByTestAppointmentID", $"No test found for Test Appointment ID {TestAppointmentID}");
+                }
             }
 
-            catch
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("GetTestIDByTestAppointmentID", TestAppointmentID, ex);
+            }
 
+            catch (Exception ex)
+            {
+                EventLogger.LogError("GetTestIDByTestAppointmentID", $"Error getting test ID for Test Appointment ID {TestAppointmentID}", ex);
             }
 
             finally
@@ -397,7 +447,6 @@ namespace DVLD_DataAccess
             }
 
             return TestID;
-
         }
     }
 }

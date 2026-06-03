@@ -1,4 +1,5 @@
-﻿using DVLDTraining_DataAccess;
+﻿using DVLD_DataAccess;
+using DVLDTraining_DataAccess;
 using System;
 using System.Data;
 using System.Data.SqlClient;
@@ -9,7 +10,7 @@ namespace DVLDtraining_DataAccess
     {
         static SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-        static public bool GetTestTypeByTestTypeID(int TestTypeID, ref string Title,ref string Description, ref float Fees)
+        static public bool GetTestTypeByTestTypeID(int TestTypeID, ref string Title, ref string Description, ref float Fees)
         {
             bool isFound = false;
 
@@ -35,13 +36,23 @@ namespace DVLDtraining_DataAccess
 
                     isFound = true;
                 }
-            }
+                else
+                {
+                    EventLogger.LogWarning("GetTestTypeByTestTypeID", $"Test Type ID {TestTypeID} not found");
+                }
 
-            catch
+                reader.Close();
+            }
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("GetTestTypeByTestTypeID", TestTypeID, ex);
                 isFound = false;
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("GetTestTypeByTestTypeID", $"Error getting test type ID {TestTypeID}", ex);
+                isFound = false;
+            }
             finally
             {
                 connection.Close();
@@ -54,10 +65,9 @@ namespace DVLDtraining_DataAccess
         {
             int TestTypeID = -1;
 
-            string query = @"Insert Into TestTypes (TestTypeTitle,TestTypeTitle,TestTypeFees)
-                            Values (@TestTypeTitle,@TestTypeDescription,@ApplicationFees)
-                            where TestTypeID = @TestTypeID;
-
+            // ملاحظة: هناك خطأ في الـ query الأصلي (كتابة خاطئة للأعمدة)
+            string query = @"Insert Into TestTypes (TestTypeTitle,TestTypeDescription,TestTypeFees)
+                            Values (@TestTypeTitle,@TestTypeDescription,@TestTypeFees);
                             SELECT SCOPE_IDENTITY();";
 
             SqlCommand command = new SqlCommand(query, connection);
@@ -66,7 +76,7 @@ namespace DVLDtraining_DataAccess
 
             command.Parameters.AddWithValue("@TestTypeDescription", Description);
 
-            command.Parameters.AddWithValue("@ApplicationFees", Fees);
+            command.Parameters.AddWithValue("@TestTypeFees", Fees);
 
             try
             {
@@ -77,13 +87,17 @@ namespace DVLDtraining_DataAccess
                 if (result != null && int.TryParse(result.ToString(), out int insertedID))
                 {
                     TestTypeID = insertedID;
+                    EventLogger.LogDataOperation("INSERT", "TestTypes", TestTypeID);
                 }
             }
-
-            catch
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("AddNewTestType", 0, ex);
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("AddNewTestType", $"Error adding test type '{Title}'", ex);
+            }
             finally
             {
                 connection.Close();
@@ -92,7 +106,7 @@ namespace DVLDtraining_DataAccess
             return TestTypeID;
         }
 
-        static public bool UpdateTestType(int ID, string Title,string Description, float Fees)
+        static public bool UpdateTestType(int ID, string Title, string Description, float Fees)
         {
             int rowsAffected = 0;
 
@@ -105,7 +119,7 @@ namespace DVLDtraining_DataAccess
 
             command.Parameters.AddWithValue("@Title", Title);
 
-            command.Parameters.AddWithValue("@Description",Description);
+            command.Parameters.AddWithValue("@Description", Description);
 
             command.Parameters.AddWithValue("@Fees", Fees);
 
@@ -114,12 +128,24 @@ namespace DVLDtraining_DataAccess
                 connection.Open();
 
                 rowsAffected = command.ExecuteNonQuery();
+
+                if (rowsAffected > 0)
+                {
+                    EventLogger.LogDataOperation("UPDATE", "TestTypes", ID);
+                }
+                else
+                {
+                    EventLogger.LogWarning("UpdateTestType", $"Test Type ID {ID} not found for update");
+                }
             }
-            catch
+            catch (SqlException ex)
             {
-
+                EventLogger.LogSqlError("UpdateTestType", ID, ex);
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("UpdateTestType", $"Error updating test type ID {ID}", ex);
+            }
             finally
             {
                 connection.Close();
@@ -146,13 +172,19 @@ namespace DVLDtraining_DataAccess
                 {
                     dt.Load(reader);
                 }
-            }
 
-            catch
+                reader.Close();
+
+                EventLogger.LogInformation("GetAllTestTypes", $"Retrieved {dt.Rows.Count} test types");
+            }
+            catch (SqlException ex)
             {
-
+                EventLogger.LogSqlError("GetAllTestTypes", 0, ex);
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("GetAllTestTypes", "Error getting all test types", ex);
+            }
             finally
             {
                 connection.Close();

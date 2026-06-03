@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DVLD_DataAccess;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -29,16 +30,24 @@ namespace DVLDTraining_DataAccess
                     isFound = true;
 
                     CountryName = (string)reader["CountryName"];
-
-                    connection.Close();
                 }
-            }
+                else
+                {
+                    EventLogger.LogWarning("GetCountryInfoByID", $"Country ID {ID} not found");
+                }
 
-            catch (Exception ex)
+                reader.Close();
+            }
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("GetCountryInfoByID", ID, ex);
                 isFound = false;
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("GetCountryInfoByID", $"Error getting country ID {ID}", ex);
+                isFound = false;
+            }
             finally
             {
                 connection.Close();
@@ -68,13 +77,24 @@ namespace DVLDTraining_DataAccess
                     isFound = true;
 
                     CountryID = (int)reader["CountryID"];
-
-                    connection.Close();
                 }
+                else
+                {
+                    EventLogger.LogWarning("GetCountryInfoByName", $"Country Name '{CountryName}' not found");
+                }
+
+                reader.Close();
+            }
+
+            catch (SqlException ex)
+            {
+                EventLogger.LogSqlError("GetCountryInfoByName", 0, ex);
+                isFound = false;
             }
 
             catch (Exception ex)
             {
+                EventLogger.LogError("GetCountryInfoByName", $"Error getting country by name '{CountryName}'", ex);
                 isFound = false;
             }
 
@@ -106,11 +126,18 @@ namespace DVLDTraining_DataAccess
                 }
 
                 reader.Close();
+
+                EventLogger.LogInformation("GetAllCountries", $"Retrieved {dt.Rows.Count} countries");
+            }
+
+            catch (SqlException ex)
+            {
+                EventLogger.LogSqlError("GetAllCountries", 0, ex);
             }
 
             catch (Exception ex)
             {
-
+                EventLogger.LogError("GetAllCountries", "Error getting all countries", ex);
             }
 
             finally

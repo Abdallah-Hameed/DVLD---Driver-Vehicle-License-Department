@@ -1,4 +1,6 @@
-﻿using DVLDTraining_DataAccess;
+﻿using DVLD_DataAccess;
+using DVLDTraining_DataAccess;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -32,20 +34,24 @@ namespace DVLDtraining_DataAccess
 
                     ClassID = (int)reader["LicenseClassID"];
                 }
-
                 else
                 {
                     isFound = false;
+                    EventLogger.LogWarning("GetLocalLicenseApplicationByID", $"Local License Application ID {ID} not found");
                 }
 
                 reader.Close();
             }
-
-            catch
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("GetLocalLicenseApplicationByID", ID, ex);
                 isFound = false;
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("GetLocalLicenseApplicationByID", $"Error getting local license application ID {ID}", ex);
+                isFound = false;
+            }
             finally
             {
                 connection.Close();
@@ -78,20 +84,24 @@ namespace DVLDtraining_DataAccess
 
                     ClassID = (int)reader["LicenseClassID"];
                 }
-
                 else
                 {
                     isFound = false;
+                    EventLogger.LogWarning("GetLocalLicenseApplicationByApplicationID", $"Application ID {ApplicationID} not found in Local Driving License Applications");
                 }
 
                 reader.Close();
             }
-
-            catch
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("GetLocalLicenseApplicationByApplicationID", ApplicationID, ex);
                 isFound = false;
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("GetLocalLicenseApplicationByApplicationID", $"Error getting local license application for Application ID {ApplicationID}", ex);
+                isFound = false;
+            }
             finally
             {
                 connection.Close();
@@ -120,12 +130,17 @@ namespace DVLDtraining_DataAccess
                 }
 
                 reader.Close();
-            }
 
-            catch
+                EventLogger.LogInformation("GetAllLocalLicenseApplications", $"Retrieved {dt.Rows.Count} local license applications");
+            }
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("GetAllLocalLicenseApplications", 0, ex);
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("GetAllLocalLicenseApplications", "Error getting all local license applications", ex);
+            }
             finally
             {
                 connection.Close();
@@ -157,13 +172,17 @@ namespace DVLDtraining_DataAccess
                 if (result != null && int.TryParse(result.ToString(), out int insertedID))
                 {
                     LocalDrivingLicenseApplicationID = insertedID;
+                    EventLogger.LogDataOperation("INSERT", "LocalDrivingLicenseApplications", LocalDrivingLicenseApplicationID);
                 }
             }
-
-            catch
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("AddNewLocalLicenseApplication", ApplicationID, ex);
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("AddNewLocalLicenseApplication", $"Error adding local license application for Application ID {ApplicationID}", ex);
+            }
             finally
             {
                 connection.Close();
@@ -195,13 +214,25 @@ namespace DVLDtraining_DataAccess
 
                 rowsAffected = command.ExecuteNonQuery();
 
+                if (rowsAffected > 0)
+                {
+                    EventLogger.LogDataOperation("UPDATE", "LocalDrivingLicenseApplications", ID);
+                }
+                else
+                {
+                    EventLogger.LogWarning("UpdateLocalLicenseApplication", $"Local License Application ID {ID} not found for update");
+                }
             }
-
-            catch
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("UpdateLocalLicenseApplication", ID, ex);
                 return false;
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("UpdateLocalLicenseApplication", $"Error updating local license application ID {ID}", ex);
+                return false;
+            }
             finally
             {
                 connection.Close();
@@ -226,12 +257,24 @@ namespace DVLDtraining_DataAccess
                 connection.Open();
 
                 rowsAffected = command.ExecuteNonQuery();
-            }
 
-            catch
+                if (rowsAffected > 0)
+                {
+                    EventLogger.LogDataOperation("DELETE", "LocalDrivingLicenseApplications", ID);
+                }
+                else
+                {
+                    EventLogger.LogWarning("DeleteLocalLicenseApplication", $"Local License Application ID {ID} not found for deletion");
+                }
+            }
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("DeleteLocalLicenseApplication", ID, ex);
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("DeleteLocalLicenseApplication", $"Error deleting local license application ID {ID}", ex);
+            }
             finally
             {
                 connection.Close();
@@ -270,11 +313,14 @@ namespace DVLDtraining_DataAccess
                     IsFound = true;
                 }
             }
-
-            catch
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("DoesAttendTestType", LocalLicenseApplicationID, ex);
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("DoesAttendTestType", $"Error checking test attendance for Local License Application ID {LocalLicenseApplicationID}, Test Type {TestTypeID}", ex);
+            }
             finally
             {
                 connection.Close();
@@ -312,11 +358,14 @@ namespace DVLDtraining_DataAccess
                     TotalTrialsPerTest = Trials;
                 }
             }
-
-            catch
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("TotalTrialsPerTest", LocalLicenseApplicationID, ex);
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("TotalTrialsPerTest", $"Error getting total trials for Local License Application ID {LocalLicenseApplicationID}, Test Type {TestTypeID}", ex);
+            }
             finally
             {
                 connection.Close();
@@ -354,11 +403,14 @@ namespace DVLDtraining_DataAccess
                     Result = true;
                 }
             }
-
-            catch
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("IsThereAnActiveScheduledTest", LocalLicenseApplicationID, ex);
             }
-
+            catch (Exception ex)
+            {
+                EventLogger.LogError("IsThereAnActiveScheduledTest", $"Error checking active scheduled test for Local License Application ID {LocalLicenseApplicationID}, Test Type {TestTypeID}", ex);
+            }
             finally
             {
                 connection.Close();
@@ -398,8 +450,14 @@ namespace DVLDtraining_DataAccess
                 }
             }
 
-            catch
+            catch (SqlException ex)
             {
+                EventLogger.LogSqlError("DoesPassTestType", LocalLicenseApplicationID, ex);
+            }
+
+            catch (Exception ex)
+            {
+                EventLogger.LogError("DoesPassTestType", $"Error checking if passed test for Local License Application ID {LocalLicenseApplicationID}, Test Type {TestTypeID}", ex);
             }
 
             finally
