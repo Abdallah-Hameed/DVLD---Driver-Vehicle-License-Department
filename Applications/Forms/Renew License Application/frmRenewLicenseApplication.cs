@@ -86,8 +86,6 @@ namespace DVLDtraining.Applications.Forms.Renew_License_Application
 
                 gbNewLicenseInfo.Visible = false;
 
-                llShowLicenseInfo.Visible = false;
-
                 return;
             }
 
@@ -98,8 +96,6 @@ namespace DVLDtraining.Applications.Forms.Renew_License_Application
                 btnSave.Enabled = false;
 
                 gbNewLicenseInfo.Visible = false;
-
-                llShowLicenseInfo.Visible = false;
 
                 return;
             }
@@ -135,7 +131,6 @@ namespace DVLDtraining.Applications.Forms.Renew_License_Application
 
             ctrlDriverLicenseWithFilter1.FilterEnabled = false;
 
-            llShowLicenseInfo.Enabled = true;
         }
 
         private void llShowLicenseInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

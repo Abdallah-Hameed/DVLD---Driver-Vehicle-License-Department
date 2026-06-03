@@ -1,4 +1,5 @@
 ﻿using DVLDtraining_BusinessLogic;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -75,23 +76,20 @@ namespace DVLDtraining.Global
         {
             try
             {
-                //in case the username is empty, delete the file
-                if (Username == "" && File.Exists(Directory.GetCurrentDirectory() + "\\remember.txt"))
+                using (RegistryKey key = Registry.CurrentUser.CreateSubKey(@"Software\DVLDtraining"))
                 {
-                    File.Delete(Directory.GetCurrentDirectory() + "\\remember.txt");
+                    if (Username == "")
+                    {
+                        key.DeleteValue("Credentials", false);
+                        
+                        return true;
+                    }
 
-                    return true;
-                }
-
-                using (StreamWriter writer = new StreamWriter(Directory.GetCurrentDirectory() + "\\remember.txt"))
-                {
-                    // Write the data to the file
-                    writer.WriteLine(Username + "#//#" + Password);
+                    key.SetValue("Credentials", Username + "#//#" + Password);
 
                     return true;
                 }
             }
-
             catch (Exception ex)
             {
                 MessageBox.Show($"An error occurred: {ex.Message}");
@@ -104,30 +102,21 @@ namespace DVLDtraining.Global
         {
             try
             {
-                if (File.Exists(Directory.GetCurrentDirectory() + "\\remember.txt"))
+                using (RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Software\DVLDtraining"))
                 {
-                    using (StreamReader reader = new StreamReader(Directory.GetCurrentDirectory() + "\\remember.txt"))
-                    {
-                        string Line;
+                    if (key == null) return false;
 
-                        while ((Line = reader.ReadLine()) != null)
-                        {
-                            Console.WriteLine(Line); // Output each line of data to the console
+                    string value = key.GetValue("Credentials") as string;
 
-                            string[] result = Line.Split(new string[] { "#//#" }, StringSplitOptions.None);
+                    if (value == null) return false;
 
-                            Username = result[0];
+                    string[] result = value.Split(new string[] { "#//#" }, StringSplitOptions.None);
 
-                            Password = result[1];
-                        }
+                    Username = result[0];
 
-                        return true;
-                    }
-                }
+                    Password = result[1];
 
-                else
-                {
-                    return false;
+                    return true;
                 }
             }
 
