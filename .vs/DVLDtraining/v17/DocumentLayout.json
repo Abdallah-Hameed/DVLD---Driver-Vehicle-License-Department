@@ -7,11 +7,11 @@
       "RelativeMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|solutionrelative:users\\forms\\frmloginscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|e:\\study\\programming\\programmingwithabohadhood\\stage 2\\c#projects\\dvldtraining\\users\\forms\\frmloginscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\users\\forms\\frmloginscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|solutionrelative:users\\forms\\frmloginscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|e:\\study\\programming\\programmingwithabohadhood\\stage 2\\c#projects\\dvldtraining\\applications\\forms\\renew license application\\frmrenewlicenseapplication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\applications\\forms\\renew license application\\frmrenewlicenseapplication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|solutionrelative:applications\\forms\\renew license application\\frmrenewlicenseapplication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -19,7 +19,7 @@
       "RelativeMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|solutionrelative:applications\\forms\\renew license application\\frmrenewlicenseapplication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|e:\\study\\programming\\programmingwithabohadhood\\stage 2\\c#projects\\dvldtraining\\global\\clsutil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\global\\clsutil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|solutionrelative:global\\clsutil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -54,8 +54,7 @@
               "RelativeToolTip": "Applications\\Forms\\Renew License Application\\frmRenewLicenseApplication.cs",
               "ViewState": "AgIAAGcAAAAAAAAAAAApwIUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-03T14:44:24.549Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-03T14:44:24.549Z"
             },
             {
               "$type": "Document",
@@ -67,8 +66,7 @@
               "RelativeToolTip": "Global\\clsUtil.cs",
               "ViewState": "AgIAAEMAAAAAAAAAAAAgwIAAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-03T14:37:25.725Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-03T14:37:25.725Z"
             },
             {
               "$type": "Document",
@@ -79,8 +77,7 @@
               "ToolTip": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Applications\\Forms\\Renew License Application\\frmRenewLicenseApplication.cs [Design]",
               "RelativeToolTip": "Applications\\Forms\\Renew License Application\\frmRenewLicenseApplication.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-24T21:47:04.87Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2026-05-24T21:47:04.87Z"
             },
             {
               "$type": "Document",
@@ -90,7 +87,7 @@
               "RelativeDocumentMoniker": "Users\\Forms\\frmLoginScreen.cs",
               "ToolTip": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Users\\Forms\\frmLoginScreen.cs",
               "RelativeToolTip": "Users\\Forms\\frmLoginScreen.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAQwCoAAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAQwDAAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-03T14:36:24.139Z",
               "EditorCaption": ""
@@ -104,8 +101,7 @@
               "ToolTip": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Users\\Forms\\frmLoginScreen.cs [Design]",
               "RelativeToolTip": "Users\\Forms\\frmLoginScreen.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-03T14:36:22.489Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2026-06-03T14:36:22.489Z"
             }
           ]
         }

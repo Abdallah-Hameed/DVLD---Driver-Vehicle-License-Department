@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|e:\\study\\programming\\programmingwithabohadhood\\stage 2\\c#projects\\dvldtraining\\users\\forms\\frmloginscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|solutionrelative:users\\forms\\frmloginscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|e:\\study\\programming\\programmingwithabohadhood\\stage 2\\c#projects\\dvldtraining\\users\\forms\\frmloginscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|solutionrelative:users\\forms\\frmloginscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|e:\\study\\programming\\programmingwithabohadhood\\stage 2\\c#projects\\dvldtraining\\applications\\forms\\renew license application\\frmrenewlicenseapplication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|solutionrelative:applications\\forms\\renew license application\\frmrenewlicenseapplication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -13,14 +21,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|e:\\study\\programming\\programmingwithabohadhood\\stage 2\\c#projects\\dvldtraining\\global\\clsutil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|solutionrelative:global\\clsutil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|e:\\study\\programming\\programmingwithabohadhood\\stage 2\\c#projects\\dvldtraining\\users\\forms\\frmloginscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|solutionrelative:users\\forms\\frmloginscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|e:\\study\\programming\\programmingwithabohadhood\\stage 2\\c#projects\\dvldtraining\\users\\forms\\frmloginscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{CEC4C401-8AD7-48D1-ACE7-464A0E4674E6}|DVLDtraining.csproj|solutionrelative:users\\forms\\frmloginscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,7 +46,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "frmRenewLicenseApplication.cs",
               "DocumentMoniker": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Applications\\Forms\\Renew License Application\\frmRenewLicenseApplication.cs",
               "RelativeDocumentMoniker": "Applications\\Forms\\Renew License Application\\frmRenewLicenseApplication.cs",
@@ -59,7 +59,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "clsUtil.cs",
               "DocumentMoniker": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Global\\clsUtil.cs",
               "RelativeDocumentMoniker": "Global\\clsUtil.cs",
@@ -72,7 +72,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "frmRenewLicenseApplication.cs [Design]",
               "DocumentMoniker": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Applications\\Forms\\Renew License Application\\frmRenewLicenseApplication.cs",
               "RelativeDocumentMoniker": "Applications\\Forms\\Renew License Application\\frmRenewLicenseApplication.cs",
@@ -84,20 +84,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "frmLoginScreen.cs",
               "DocumentMoniker": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Users\\Forms\\frmLoginScreen.cs",
               "RelativeDocumentMoniker": "Users\\Forms\\frmLoginScreen.cs",
               "ToolTip": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Users\\Forms\\frmLoginScreen.cs",
               "RelativeToolTip": "Users\\Forms\\frmLoginScreen.cs",
-              "ViewState": "AgIAACgAAAAAAAAAAAAQwDcAAAAvAAAAAAAAAA==",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAQwCoAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-03T14:36:24.139Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "frmLoginScreen.cs [Design]",
               "DocumentMoniker": "E:\\Study\\Programming\\ProgrammingWithAboHadhood\\Stage 2\\C#Projects\\DVLDtraining\\Users\\Forms\\frmLoginScreen.cs",
               "RelativeDocumentMoniker": "Users\\Forms\\frmLoginScreen.cs",
