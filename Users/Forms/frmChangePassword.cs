@@ -1,4 +1,5 @@
-﻿using DVLDtraining.Properties;
+﻿using DVLDtraining.Global;
+using DVLDtraining.Properties;
 using DVLDtraining_BusinessLogic;
 using System;
 using System.Drawing;
@@ -108,14 +109,14 @@ namespace DVLDtraining.Users.Forms
             if (!CheckFields())
                 return;
 
-            if (txtCurrentPassword.Text.Trim() != _User.Password.Trim())
+            if (clsUtil.ComputeHash(txtCurrentPassword.Text.Trim()) != _User.Password.Trim())
             {
                 MessageBox.Show("Current password is wrong!", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 return;
             }
 
-            _User.Password = txtNewPassword.Text.Trim();
+            _User.Password = clsUtil.ComputeHash(txtNewPassword.Text.Trim());
 
             if (_User.Save())
             {

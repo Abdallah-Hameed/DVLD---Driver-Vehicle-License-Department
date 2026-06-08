@@ -233,7 +233,7 @@ namespace DVLDtraining
             {
                 MessageBox.Show("No user logged in!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                this.Close();
+                Application.Exit();
             }
 
             timer1.Interval = 1000;

@@ -1,12 +1,11 @@
 ﻿using DVLDTrainin_BusinessLogic;
 using DVLDtraining.Global;
-using DVLDtraining.People.Forms;
 using DVLDtraining.Users.Forms;
 using DVLDtraining_BusinessLogic;
-using Microsoft.VisualBasic.ApplicationServices;
 using System;
-using System.Data;
 using System.Drawing;
+using System.Security.Cryptography;
+using System.Text;
 using System.Windows.Forms;
 
 namespace DVLDtraining.Users
@@ -137,7 +136,7 @@ namespace DVLDtraining.Users
 
             _User.UserName = txtUserName.Text;
 
-            _User.Password = txtPassword.Text;
+            _User.Password = clsUtil.ComputeHash(txtPassword.Text);
 
             _User.IsActive = chkIsActive.Checked;
 

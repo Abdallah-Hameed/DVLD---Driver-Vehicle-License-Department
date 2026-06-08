@@ -40,7 +40,7 @@ namespace DVLDtraining
 
         private void btnLogin_Click_1(object sender, EventArgs e)
         {
-            clsUser User = clsUser.Find(txtUserName.Text.Trim(), txtPassword.Text.Trim());
+            clsUser User = clsUser.Find(txtUserName.Text.Trim(), clsUtil.ComputeHash(txtPassword.Text.Trim()));
 
             if (User != null)
             {
@@ -56,7 +56,7 @@ namespace DVLDtraining
                         clsUtil.RememberUsernameAndPassword("", "");
                     }
 
-                    clsUtil.CurrentUser = clsUser.Find(txtUserName.Text.Trim(), txtPassword.Text.Trim());
+                    clsUtil.CurrentUser = clsUser.Find(txtUserName.Text.Trim(), clsUtil.ComputeHash(txtPassword.Text.Trim()));
 
                     this.Hide();
 
