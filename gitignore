@@ -1,0 +1,11 @@
+@"
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.pdb
+*.exe
+*.dll
+remember.txt
+"@ | Set-Content -Path .gitignore -Encoding utf8
