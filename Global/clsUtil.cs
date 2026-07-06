@@ -17,7 +17,7 @@ namespace DVLDtraining.Global
 
         static string GeneerateGUID()
         {
-            Guid g = new Guid();
+            Guid g = Guid.NewGuid();
 
             return g.ToString();
         }
@@ -58,7 +58,11 @@ namespace DVLDtraining.Global
 
             try
             {
-                File.Copy(SourceFile, @"C:\DVLD-People-Images\" + ReplaceFileNameWithGUID(SourceFile), true);
+                string destinationFile = @"C:\DVLD-People-Images\" + ReplaceFileNameWithGUID(SourceFile);
+
+                File.Copy(SourceFile, destinationFile, true);
+
+                SourceFile = destinationFile;
             }
 
             catch (IOException ex)
@@ -67,8 +71,6 @@ namespace DVLDtraining.Global
 
                 return false;
             }
-
-            SourceFile = @"C:\DVLD-People-Images\" + ReplaceFileNameWithGUID(SourceFile);
 
             return true;
         }
