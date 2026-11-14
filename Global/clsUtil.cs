@@ -113,11 +113,11 @@ namespace DVLDtraining.Global
 
                     if (value == null) return false;
 
-                    string[] result = value.Split(new string[] { "#//#" }, StringSplitOptions.None);
+                    int separatorIndex = value.IndexOf("#//#", StringComparison.Ordinal);
+                    if (separatorIndex < 0) return false;
 
-                    Username = result[0];
-
-                    Password = result[1];
+                    Username = value.Substring(0, separatorIndex);
+                    Password = value.Substring(separatorIndex + "#//#".Length);
 
                     return true;
                 }
