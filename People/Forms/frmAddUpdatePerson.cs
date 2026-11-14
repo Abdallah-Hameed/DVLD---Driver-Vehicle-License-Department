@@ -298,9 +298,12 @@ namespace DVLDtraining.People.Forms
 
             openFileDialog1.FilterIndex = 1;
 
-            openFileDialog1.RestoreDirectory = true;
+            if (!string.IsNullOrEmpty(pbPersonImage.ImageLocation))
+            {
+                openFileDialog1.RestoreDirectory = true;
+            }
 
-            if(openFileDialog1.ShowDialog() == DialogResult.OK)
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 pbPersonImage.Load(openFileDialog1.FileName);
 
